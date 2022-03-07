@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,22 +22,19 @@ public class ListaEmpresasServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Banco b=new Banco();
-		
+	
 		List<Empresa>empresas=b.getEmpresas();
-		PrintWriter out= response.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<ul>");
-		for(Empresa e:empresas) {
-			
-			out.println("<li>"+e.getNome()+"</li>");
-		}
-		out.println("</ul>");
-		out.println("</body>");
-		out.println("</html>");
+		
+				
+		request.setAttribute("empresas",empresas);
+		
+		RequestDispatcher rd= request.getRequestDispatcher("/listaEmpresas.jsp");
+		
+		rd.forward(request, response);
+		
 	}
 
 	
