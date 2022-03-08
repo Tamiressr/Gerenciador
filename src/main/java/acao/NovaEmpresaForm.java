@@ -1,8 +1,10 @@
 package acao;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,18 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.model.Banco;
 import br.com.alura.gerenciador.model.Empresa;
 
-public class MostraEmpresa implements Acao{
-
+public class NovaEmpresaForm  implements Acao{
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String id= request.getParameter("id");
-		Long i=Long.valueOf(id);
-		Banco b=new Banco();
-		Empresa e=b.buscaEmpresaId(i);
-		 request.setAttribute("empresa", e);
 		
-		 return "forward:formAlteraEmpresa.jsp";
+		
+	
+		
+		return "forward:formNovaEmpresa.jsp";
+		
 	}
 
 }

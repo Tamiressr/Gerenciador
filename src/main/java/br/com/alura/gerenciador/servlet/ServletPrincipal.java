@@ -1,17 +1,15 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import acao.AlteraEmpresa;
-import acao.ListaEmpresas;
-import acao.MostraEmpresa;
-import acao.NovaEmpresa;
-import acao.RemoveEmpresa;
+import acao.Acao;
 
 /**
  * Servlet implementation class ServletPrincipal
@@ -25,27 +23,30 @@ public class ServletPrincipal extends HttpServlet {
 		
 		
 		String paramAcao= req.getParameter("acao");
-		if(paramAcao.equals("listaEmpresa")){
-			ListaEmpresas acao= new ListaEmpresas();
-		    acao.executa(req, resp);	
+		
+		
+		String nomeDaClasse= "br.com.alura.gerenciador.acao."+paramAcao;
+		
+		String nome="";
+		try {
+			Class classe= Class.forName(nomeDaClasse);
+			Object obj=classe.newInstance(); //reflection  + Padrão de projeto Command aplicado para receber um parametro na req e delegar pra o caminho específico
+			Acao acao=(Acao)obj;
+			nome = acao.executa(req,resp);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | ServletException
+				| IOException e) {
+			// TODO Auto-generated catch block
+			throw new ServletException(e);
 		}
-		else if(paramAcao.equals("removeEmpresa")){
-			
-			RemoveEmpresa acao= new RemoveEmpresa();
-			acao.executa(req, resp);
+		
+		
+		String []tipoEEndereco=nome.split(":");
+		if(tipoEEndereco[0].equals("forward")) {
+			RequestDispatcher rd= req.getRequestDispatcher("WEB-INF/view/"+tipoEEndereco[1]);
+			rd.forward(req, resp);
 		}
-		else if (paramAcao.equals("mostraEmpresa")){
-			
-			MostraEmpresa acao= new MostraEmpresa();
-			acao.executa(req, resp);
-		}
-		else if(paramAcao.equals("alteraEmpresa")){
-			AlteraEmpresa acao= new AlteraEmpresa();
-			acao.executa(req, resp);
-		}
-		else if(paramAcao.equals("novaEmpresa")) {
-			NovaEmpresa acao= new NovaEmpresa();
-			acao.executa(req, resp);
+		else {
+			resp.sendRedirect(tipoEEndereco[1]);
 		}
 	}
 }
