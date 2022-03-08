@@ -1,10 +1,10 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.catalina.tribes.util.Arrays;
+
 
 public class Banco {
 	private static List<Empresa>lista=new ArrayList<>();
