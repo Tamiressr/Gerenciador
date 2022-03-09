@@ -18,7 +18,7 @@ public class ListaEmpresas implements Acao{
 	
 		HttpSession sessao= request.getSession();
 		if(sessao.getAttribute("usuarioLogado")==null) {
-			return "redirect:servletPrincipal?acao=LoginForm";
+			return "redirect:entrada?acao=LoginForm";
 		}
 		Banco b=new Banco();
 		List<Empresa>empresas=b.getEmpresas();

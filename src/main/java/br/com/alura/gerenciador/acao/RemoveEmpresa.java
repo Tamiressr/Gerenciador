@@ -15,7 +15,7 @@ public class RemoveEmpresa implements Acao{
 		Banco b=new Banco();
 		b.remove(i);
 		
-			return "redirect:servletPrincipal?acao=ListaEmpresas";
+			return "redirect:entrada?acao=ListaEmpresas";
 		
 	}
 }

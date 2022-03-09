@@ -16,12 +16,13 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AutorizacaoFilter
  */
-//@WebFilter("/servletPrincipal")
+//@WebFilter("/entrada")
 public class AutorizacaoFilter extends HttpFilter implements Filter {
        
 
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
 	
+		System.out.println("AutoricacaoFilter");
 		HttpServletRequest request= (HttpServletRequest) servletRequest;
 		HttpServletResponse response=( HttpServletResponse) servletResponse;
 		
@@ -33,7 +34,7 @@ public class AutorizacaoFilter extends HttpFilter implements Filter {
 		boolean ehUmaAcaoProtegida= !(paramAcao.equals("Login") ||paramAcao.equals("LoginForm"));
 		
 		if(ehUmaAcaoProtegida && usuarioNaoEstaLogado) {
-			response.sendRedirect("servletPrincipal?acao=LoginForm");
+			response.sendRedirect("entrada?acao=LoginForm");
 			return; //obriga o  servlet a não executar o restante do código abaixo
 		}
 		

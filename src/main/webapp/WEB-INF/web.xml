@@ -6,6 +6,7 @@
   </welcome-file-list>
   
   
+  
    <filter>
     <filter-name>MF</filter-name>
     <filter-class>br.com.alura.gerenciador.servlet.MonitoramentoFilter</filter-class>
@@ -13,7 +14,7 @@
 
 <filter-mapping>
     <filter-name>MF</filter-name>
-    <url-pattern>/servletPrincipal</url-pattern>
+    <url-pattern>/entrada</url-pattern>
 </filter-mapping>
   
   
@@ -24,9 +25,18 @@
 
 <filter-mapping>
     <filter-name>AF</filter-name>
-    <url-pattern>/servletPrincipal</url-pattern>
+    <url-pattern>/entrada</url-pattern>
 </filter-mapping>
 
+  <filter>
+    <filter-name>CF</filter-name>
+    <filter-class>br.com.alura.gerenciador.servlet.ControladorFilter</filter-class>
+</filter>
+
+<filter-mapping>
+    <filter-name>CF</filter-name>
+    <url-pattern>/entrada</url-pattern>
+</filter-mapping>
 
 
 </web-app>

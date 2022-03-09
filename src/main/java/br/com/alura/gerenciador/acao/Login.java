@@ -24,9 +24,9 @@ public class Login implements Acao{
 			//guarda o usuario na session
 			HttpSession sessao= request.getSession();
 			sessao.setAttribute("usuarioLogado", usuario);
-			return "redirect:servletPrincipal?acao=ListaEmpresas";
+			return "redirect:entrada?acao=ListaEmpresas";
 		}else {
-			return "redirect:servletPrincipal?acao=LoginForm";
+			return "redirect:entrada?acao=LoginForm";
 		}
 		
 	}

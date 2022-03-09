@@ -15,14 +15,13 @@ import br.com.alura.gerenciador.acao.Acao;
 /**
  * Servlet implementation class ServletPrincipal
  */
-@WebServlet("/servletPrincipal")
+@WebServlet("/entrada")
 public class ServletPrincipal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String paramAcao= req.getParameter("acao");
 		//HttpSession sessao= req.getSession();
 //		boolean usuarioNaoEstaLogado =(sessao.getAttribute("usuarioLogado")==null);
 //		boolean ehUmaAcaoProtegida= !(paramAcao.equals("Login") ||paramAcao.equals("LoginForm"));
@@ -34,29 +33,30 @@ public class ServletPrincipal extends HttpServlet {
 //		
 		
 		
-		
-		String nomeDaClasse= "br.com.alura.gerenciador.acao."+paramAcao;
-		
-		String nome;
-		try {
-			Class classe= Class.forName(nomeDaClasse);
-			
-			Acao obj=(Acao)classe.newInstance(); //API de Reflection  + Padrão de projeto Command aplicado para receber um parametro na req e delegar pra o caminho específico
-			nome = obj.executa(req,resp);
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | ServletException
-				| IOException e) {
-			// TODO Auto-generated catch block
-			throw new ServletException(e);
-		}
-		
-		
-		String []tipoEEndereco=nome.split(":");
-		if(tipoEEndereco[0].equals("forward")) {
-			RequestDispatcher rd= req.getRequestDispatcher("WEB-INF/view/"+tipoEEndereco[1]);
-			rd.forward(req, resp);
-		}
-		else {
-			resp.sendRedirect(tipoEEndereco[1]);
-		}
+//		String paramAcao= req.getParameter("acao");
+//		
+//		String nomeDaClasse= "br.com.alura.gerenciador.acao."+paramAcao;
+//		
+//		String nome;
+//		try {
+//			Class classe= Class.forName(nomeDaClasse);
+//			
+//			Acao obj=(Acao)classe.newInstance(); //API de Reflection  + Padrão de projeto Command aplicado para receber um parametro na req e delegar pra o caminho específico
+//			nome = obj.executa(req,resp);
+//		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | ServletException
+//				| IOException e) {
+//			// TODO Auto-generated catch block
+//			throw new ServletException(e);
+//		}
+//		
+//		
+//		String []tipoEEndereco=nome.split(":");
+//		if(tipoEEndereco[0].equals("forward")) {
+//			RequestDispatcher rd= req.getRequestDispatcher("WEB-INF/view/"+tipoEEndereco[1]);
+//			rd.forward(req, resp);
+//		}
+//		else {
+//			resp.sendRedirect(tipoEEndereco[1]);
+//		}
 	}
 }

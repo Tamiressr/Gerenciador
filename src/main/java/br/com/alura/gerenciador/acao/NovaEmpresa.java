@@ -41,7 +41,7 @@ System.out.println("Cadastrando nova empresa");
 		request.setAttribute("empresa", empresa.getNome());
 		
 		
-		return "redirect:servletPrincipal?acao=ListaEmpresas";
+		return "redirect:entrada?acao=ListaEmpresas";
 		
 	}
 

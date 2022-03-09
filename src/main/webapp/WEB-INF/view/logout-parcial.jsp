@@ -1,5 +1,5 @@
 
-<a href="servletPrincipal?acao=Logout">Sair</a>
+<a href="entrada?acao=Logout">Sair</a>
 <br>
 <br>
 <br>

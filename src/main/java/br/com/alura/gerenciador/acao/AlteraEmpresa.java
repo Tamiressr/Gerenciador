@@ -41,7 +41,7 @@ public class AlteraEmpresa implements Acao{
 		
 
 		
-		return "redirect:servletPrincipal?acao=ListaEmpresas";
+		return "redirect:entrada?acao=ListaEmpresas";
 	}
 	
 

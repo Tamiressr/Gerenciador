@@ -14,7 +14,7 @@
 <body>
 <c:import url="logout-parcial.jsp"></c:import>
 
-<a href="servletPrincipal?acao=NovaEmpresaForm">Criar Empresa</a>
+<a href="entrada?acao=NovaEmpresaForm">Criar Empresa</a>
 <br>
 <br>
 <br>
@@ -28,8 +28,8 @@ Usuario Logado : ${usuarioLogado.login}
 			<c:forEach items="${empresas}" var="empresa">
 			<li>
 				${empresa.nome } - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/> 
-				<a href="<c:url value="/servletPrincipal?acao=MostraEmpresa&id=${empresa.id}"> </c:url>">edita</a>
-				<a href="<c:url value="/servletPrincipal?acao=RemoveEmpresa&id=${empresa.id}"> </c:url>">remove</a>
+				<a href="<c:url value="/entrada?acao=MostraEmpresa&id=${empresa.id}"> </c:url>">edita</a>
+				<a href="<c:url value="/entrada?acao=RemoveEmpresa&id=${empresa.id}"> </c:url>">remove</a>
 				</li>
 			</c:forEach>
 

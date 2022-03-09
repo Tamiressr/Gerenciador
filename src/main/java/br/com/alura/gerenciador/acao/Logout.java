@@ -19,7 +19,7 @@ public class Logout implements Acao{
 		//invalida a sessão
 		sessao.invalidate();
 		
-		return "redirect:servletPrincipal?acao=LoginForm";
+		return "redirect:entrada?acao=LoginForm";
 	}
 
 }
