@@ -22,7 +22,6 @@ public class ListaEmpresas implements Acao{
 		}
 		Banco b=new Banco();
 		List<Empresa>empresas=b.getEmpresas();
-		System.out.println(empresas);
 				
 		request.setAttribute("empresas",empresas);
 		
