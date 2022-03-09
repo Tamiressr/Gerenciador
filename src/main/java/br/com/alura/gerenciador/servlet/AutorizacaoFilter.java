@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AutorizacaoFilter
  */
-@WebFilter("/servletPrincipal")
+//@WebFilter("/servletPrincipal")
 public class AutorizacaoFilter extends HttpFilter implements Filter {
        
 

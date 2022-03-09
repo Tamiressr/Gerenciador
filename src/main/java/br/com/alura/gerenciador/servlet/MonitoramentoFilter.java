@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-@WebFilter(urlPatterns = "/servletPrincipal") //igual ao servlet garante que todas as requisições do service vão chegar no filter
+//@WebFilter(urlPatterns = "/servletPrincipal") //igual ao servlet garante que todas as requisições do service vão chegar no filter
 public class MonitoramentoFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
