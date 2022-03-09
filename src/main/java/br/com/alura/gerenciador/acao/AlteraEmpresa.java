@@ -1,4 +1,4 @@
-package acao;
+package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -41,7 +41,7 @@ public class AlteraEmpresa implements Acao{
 		
 
 		
-		return "redirect:servletPrincipal?acao=listaEmpresa";
+		return "redirect:servletPrincipal?acao=ListaEmpresas";
 	}
 	
 

@@ -12,19 +12,24 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:import url="logout-parcial.jsp"></c:import>
 
+<a href="servletPrincipal?acao=NovaEmpresaForm">Criar Empresa</a>
+<br>
+<br>
+<br>
 <c:if test="${not empty empresa }">
 empresa ${empresa} cadastrada com sucesso
 </c:if>
-
+Usuario Logado : ${usuarioLogado.login}
 	Lista de empresa:
 
 		<ul>
 			<c:forEach items="${empresas}" var="empresa">
 			<li>
 				${empresa.nome } - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/> 
-				<a href="<c:url value="/servletPrincipal?acao=mostraEmpresa&id=${empresa.id}"> </c:url>">edita</a>
-				<a href="<c:url value="/servletPrincipal?acao=removeEmpresa&id=${empresa.id}"> </c:url>">remove</a>
+				<a href="<c:url value="/servletPrincipal?acao=MostraEmpresa&id=${empresa.id}"> </c:url>">edita</a>
+				<a href="<c:url value="/servletPrincipal?acao=RemoveEmpresa&id=${empresa.id}"> </c:url>">remove</a>
 				</li>
 			</c:forEach>
 

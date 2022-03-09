@@ -1,4 +1,4 @@
-package acao;
+package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ public class RemoveEmpresa implements Acao{
 		Banco b=new Banco();
 		b.remove(i);
 		
-			return "redirect:servletPrincipal?acao=listaEmpresa";
+			return "redirect:servletPrincipal?acao=ListaEmpresas";
 		
 	}
 }
