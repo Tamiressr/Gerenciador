@@ -55,7 +55,7 @@ public class ControladorFilter extends HttpFilter implements Filter {
 			resp.sendRedirect(tipoEEndereco[1]);
 		}
 		
-		//não tem o chain pq é o ultimo filtro 
+		//não tem o chain.doFilter pq é o ultimo filtro 
 	}
 
 
