@@ -17,31 +17,36 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class AutorizacaoFilter
  */
 //@WebFilter("/entrada")
-public class AutorizacaoFilter extends HttpFilter implements Filter {
-       
+public class AutorizacaoFilter  implements Filter {
 
-	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
-	
-		System.out.println("AutoricacaoFilter");
-		HttpServletRequest request= (HttpServletRequest) servletRequest;
-		HttpServletResponse response=( HttpServletResponse) servletResponse;
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
 		
+	}
+	@Override
+	public void destroy() {
 		
-		HttpSession sessao= request.getSession();
-		String paramAcao= request.getParameter("acao");
-		
-		boolean usuarioNaoEstaLogado =(sessao.getAttribute("usuarioLogado")==null);
-		boolean ehUmaAcaoProtegida= !(paramAcao.equals("Login") ||paramAcao.equals("LoginForm"));
-		
-		if(ehUmaAcaoProtegida && usuarioNaoEstaLogado) {
-			response.sendRedirect("entrada?acao=LoginForm");
-			return; //obriga o  servlet a não executar o restante do código abaixo
-		}
-		
-		
-		
-		chain.doFilter(request, response);
 	}
 
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
+			throws IOException, ServletException {
+
+		System.out.println("AutoricacaoFilter");
+		HttpServletRequest request = (HttpServletRequest) servletRequest;
+		HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+		HttpSession sessao = request.getSession();
+		String paramAcao = request.getParameter("acao");
+
+		boolean usuarioNaoEstaLogado = (sessao.getAttribute("usuarioLogado") == null);
+		boolean ehUmaAcaoProtegida = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm"));
+
+		if (ehUmaAcaoProtegida && usuarioNaoEstaLogado) {
+			response.sendRedirect("entrada?acao=LoginForm");
+			return; // obriga o servlet a não executar o restante do código abaixo
+		}
+
+		chain.doFilter(request, response);
+	}
 
 }
